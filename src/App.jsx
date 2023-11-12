@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+/* import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg' */
 import './App.css'
 import Characters from './Components/Card/Characters';
 import Navbar from './Components/Navbar/Navbar';
@@ -11,7 +11,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
 
  const urlPrincipal =  "https://rickandmortyapi.com/api/character";
- //const urlPrincipal =  " https://pokeapi.co/api/v2/pokemon/";
+ //const urlPrincipal =  "https://pokeapi.co/api/v2/pokemon/";
 
  const fetchCharacters = (url) =>{
     fetch (url)
