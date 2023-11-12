@@ -3,7 +3,7 @@ import React from 'react'
 const Navbar=({titulo})=> {
   return (
     <nav className='navbar navbar-dark bg-dark'>
-        <div className='container'>
+        <div className='container justify-content-center'>
             <a className='navbar-brand text-uppercase' href="/"> {titulo}</a>
         </div>
     </nav>

@@ -9,28 +9,57 @@ import Paginar from './Components/Paginar/Paginar';
 function App() {
 
   const [characters, setCharacters] = useState([]);
+  const [info, setInfo] = useState({})
 
- const urlPrincipal =  "https://rickandmortyapi.com/api/character";
+  const urlPrincipal =  "https://rickandmortyapi.com/api/character";
  //const urlPrincipal =  "https://pokeapi.co/api/v2/pokemon/";
 
- const fetchCharacters = (url) =>{
+  const fetchCharacters = (url) =>{
     fetch (url)
       .then(Response => Response.json())
-      .then (data =>setCharacters(data.results))
+      .then (data =>{
+        setCharacters(data.results);
+        setInfo(data.info);
+      })
       .catch (error => console.log(error))
- };
+  };
   
-useEffect(() => {
-  fetchCharacters(urlPrincipal);
+  useEffect(() => {
+    fetchCharacters(urlPrincipal);
   },[])
+
+
+  const onPrev = ()=>{
+    fetchCharacters(info.prev)
+  }
+
+  const onNext = ()=>{
+    fetchCharacters(info.next)
+  }
+  
+  const First = "https://rickandmortyapi.com/api/character?page=1/";
+ 
+  
 
   return (
     <>
-          <Navbar titulo = 'My Cards Rick And Morty' />
+          <Navbar titulo = 'Rick And Morty Card Store' />
           <div className='container'>
-            <Paginar/>
+            <Paginar 
+              next={info.next} 
+              prev={info.prev} 
+              onNext={onNext}
+              onPrev={onPrev}
+              First={First}
+            />
             <Characters characters={characters}/>
-            <Paginar/>
+            <Paginar 
+              next={info.next} 
+              prev={info.prev} 
+              onNext={onNext}
+              onPrev={onPrev}
+              First={First}
+            />
           </div>
     </>
   )
