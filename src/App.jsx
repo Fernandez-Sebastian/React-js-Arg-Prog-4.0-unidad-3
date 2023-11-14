@@ -40,7 +40,7 @@ function App() {
           <div className="contenedor-animado">
               <p className="parrafo-movimiento">This is a page made for Rick And Morty fans, where you can purchase collectible cards from your favorite series.</p>
           </div>
-          {<img src='../../public/img/rick-and-morty.jpg' class="card-img" alt="" />}
+          {<img src='img/rick-and-morty.jpg' class="card-img" alt="" />}
         </section>
         <div id='cards' className='container'>
           <Paginar 
