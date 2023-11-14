@@ -1,0 +1,6 @@
+.card:hover{
+    transform:scale(1.2) ;
+    transition: 1s;
+    z-index: 99;
+    cursor: pointer;
+}

@@ -1,18 +1,15 @@
 import React, { useState,useEffect } from 'react'
-/* import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg' */
 import './App.css'
 import Characters from './Components/Card/Characters';
 import Navbar from './Components/Navbar/Navbar';
 import Paginar from './Components/Paginar/Paginar';
+import Footer from './Components/Footer/Footer';
 
 function App() {
 
   const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState({})
-
   const urlPrincipal =  "https://rickandmortyapi.com/api/character";
- //const urlPrincipal =  "https://pokeapi.co/api/v2/pokemon/";
 
   const fetchCharacters = (url) =>{
     fetch (url)
@@ -28,39 +25,42 @@ function App() {
     fetchCharacters(urlPrincipal);
   },[])
 
-
   const onPrev = ()=>{
     fetchCharacters(info.prev)
   }
-
   const onNext = ()=>{
     fetchCharacters(info.next)
   }
-  
-  const First = "https://rickandmortyapi.com/api/character?page=1/";
- 
-  
 
   return (
-    <>
-          <Navbar titulo = 'Rick And Morty Card Store' />
-          <div className='container'>
-            <Paginar 
-              next={info.next} 
-              prev={info.prev} 
-              onNext={onNext}
-              onPrev={onPrev}
-              First={First}
-            />
-            <Characters characters={characters}/>
-            <Paginar 
-              next={info.next} 
-              prev={info.prev} 
-              onNext={onNext}
-              onPrev={onPrev}
-              First={First}
-            />
+    <>  
+      <div className='fondo' >
+       <section id='head'>
+          <Navbar titulo ='Rick And Morty Card Store'/>
+          <div className="contenedor-animado">
+              <p className="parrafo-movimiento">This is a page made for Rick And Morty fans, where you can purchase collectible cards from your favorite series.</p>
           </div>
+          {<img src='../../public/img/rick-and-morty.jpg' class="card-img" alt="" />}
+        </section>
+        <div id='cards' className='container'>
+          <Paginar 
+            next={info.next} 
+            prev={info.prev} 
+            onNext={onNext}
+            onPrev={onPrev}
+          />
+          <Characters characters={characters}/>
+          <Paginar 
+            next={info.next} 
+            prev={info.prev} 
+            onNext={onNext}
+            onPrev={onPrev}
+          />
+        </div>
+        <div>
+          <Footer/>
+        </div>
+      </div>
     </>
   )
 }
